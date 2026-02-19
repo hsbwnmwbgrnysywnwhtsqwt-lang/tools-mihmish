@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory Master Beta | mishmish</title>
+  <meta name="description" content="הצטרף לתוכנית הבטא של Memory Master — משחק הזיכרון של mishmish." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="logo-icon-nobg.png" type="image/png" />
+  <link rel="apple-touch-icon" href="logo-icon-nobg.png" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <ul class="navbar-links" id="navLinks">
+      <li><a href="about.html">אודות</a></li>
+      <li><a href="contact.html">צור קשר</a></li>
+      <li><a href="projects.html">פרויקטים</a></li>
+      <li><a href="index.html#skills">כישורים</a></li>
+      <li><a href="index.html#hire">שירותים</a></li>
+      <li><a href="index.html" style="color:var(--orange);">← חזור לדף הבית</a></li>
+    </ul>
+
+  <!-- Hero -->
+  <section class="beta-hero">
+    <div class="beta-hero-glow"></div>
+    <div class="beta-hero-inner">
+      <img src="memory master.png" alt="Memory Master" style="width: 120px; height: 120px; object-fit: contain; margin: 0 auto 1.5rem; filter: drop-shadow(0 4px 16px rgba(244,162,45,0.3));">
+      <div class="beta-label">בטא פתוחה</div>
+      <h1>Memory Master</h1>
+      <p class="beta-tagline">משחק הזיכרון האולטימטיבי — בנוי עם AI</p>
+      <p class="beta-desc">
+        היה מהראשונים לנסות! לאחר הזנת הפרטים, המערכת תשלח לנו אימייל ונוסיף אותך כבודק בטא בהקדם האפשרי.
+      </p>
+      <div class="beta-android-badge">📱 Android בלבד</div>
+
+      <div class="beta-steps">
+        <div class="beta-step">
+          <div class="beta-step-num">1</div>
+          <div class="beta-step-text">לחץ "הצטרף לבטא"</div>
+        </div>
+        <div class="beta-step-arrow">←</div>
+        <div class="beta-step">
+          <div class="beta-step-num">⏳</div>
+          <div class="beta-step-text">המתן לאישור מאיתנו</div>
+        </div>
+        <div class="beta-step-arrow">←</div>
+        <div class="beta-step">
+          <div class="beta-step-num">3</div>
+          <div class="beta-step-text">הורד ושחק!</div>
+        </div>
+      </div>
+
+      <!-- טופס הרשמה — שולח מייל למיכאל + מעביר ל-Google Play -->
+      <form class="beta-form" id="betaForm" novalidate>
+        <div class="beta-form-row">
+          <input
+            type="text"
+            id="betaName"
+            placeholder="השם שלך"
+            required
+          />
+          <input
+            type="email"
+            id="betaEmail"
+            placeholder="האימייל שלך"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-beta-primary">
+          <span class="btn-icon">✉️</span>
+          שלח בקשת הצטרפות במייל
+        </button>
+        <p class="beta-form-msg" id="betaMsg"></p>
+      </form>
+
+      <div class="beta-buttons">
+        <!-- כפתור Play Store רגיל -->
+        <a
+          href="https://play.google.com/store/apps/details?id=com.levmish.emojimemory"
+          target="_blank"
+          class="btn btn-beta-outline"
+        >
+          כבר בטא? פתח ב-Play Store ←
+        </a>
+      </div>
+
+      <p class="beta-note">
+        * הרשמה חינמית לחלוטין. נדרש חשבון Google ומכשיר Android.
+        הגרסה זמינה ל-Android בלבד — iOS לא נתמך כרגע.
+      </p>
+    </div>
+  </section>
+
+  <!-- מה זה המשחק -->
+  <section class="beta-about-section">
+    <div class="section-inner">
+      <h2 class="section-title">מה זה Memory Master?</h2>
+      <p class="section-desc">משחק זיכרון קלאסי — עם טוויסט של אמוג'ים</p>
+
+      <div class="beta-features">
+        <div class="beta-feature">
+          <div class="beta-feature-icon">🧠</div>
+          <h3>אתגר את הזיכרון</h3>
+          <p>מצא זוגות של אמוג'ים תוך כמה שפחות הפיכות</p>
+        </div>
+        <div class="beta-feature">
+          <div class="beta-feature-icon">⚡</div>
+          <h3>רמות קושי</h3>
+          <p>מקל לקשה — התאם לרמה שלך</p>
+        </div>
+        <div class="beta-feature">
+          <div class="beta-feature-icon">🤖</div>
+          <h3>נבנה עם AI</h3>
+          <p>כל חלק במשחק נוצר עם עזרת AI</p>
+        </div>
+        <div class="beta-feature">
+          <div class="beta-feature-icon">📱</div>
+          <h3>Android</h3>
+          <p>משחק חינמי ל-Android — בכל מקום</p>
+        </div>
+      </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <img
+        class="footer-logo"
+        src="logo-full-nobg.png"
+        alt="mishmish"
+      />
+      <p>
+        <span>mishmish</span> &copy; 2025 &nbsp;·&nbsp; מיכאל לב &nbsp;·&nbsp; Building small tools
+      </p>
+      <div class="footer-links">
+        <a href="index.html">← חזרה לאתר הראשי</a>
+        <a href="mailto:levmishmish14@gmail.com">levmishmish14@gmail.com</a>
+        <a href="https://wa.me/972535237474" target="_blank">💬 WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // ===== טופס בטא =====
+    const betaForm = document.getElementById('betaForm');
+    const betaMsg  = document.getElementById('betaMsg');
+
+    betaForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name  = document.getElementById('betaName').value.trim();
+      const email = document.getElementById('betaEmail').value.trim();
+
+      if (!name || !email) {
+        betaMsg.textContent = '⚠️ אנא מלא שם ואימייל';
+        betaMsg.className = 'beta-form-msg error';
+        return;
+      }
+
+      // יצירת קישור mailto עם הפרטים
+      const subject = encodeURIComponent(`בקשת הצטרפות לבטא: Memory Master`);
+      const body = encodeURIComponent(`שלום מיכאל,\n\nאשמח להצטרף כבודק בטא למשחק Memory Master.\n\nפרטים:\nשם: ${name}\nאימייל: ${email}`);
+      
+      window.location.href = `mailto:levmishmish14@gmail.com?subject=${subject}&body=${body}`;
+
+      betaMsg.textContent = '✅ מעולה! פותח את תוכנת המייל לשליחת הבקשה... אחזור אליך בהקדם';
+      betaMsg.className = 'beta-form-msg success';
+      
+      betaForm.reset();
+    });
+  </script>
+</body>
+</html>

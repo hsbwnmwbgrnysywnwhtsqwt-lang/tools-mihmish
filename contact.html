@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>צור קשר | mishmish</title>
+  <meta name="description" content="צור קשר עם מיכאל לב - מתכנת AI ובונה אתרים." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="logo-icon-nobg.png" type="image/png" />
+  <link rel="apple-touch-icon" href="logo-icon-nobg.png" />
+</head>
+<body>
+
+  <!-- ===== Navbar ===== -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="navbar-brand">
+      <img src="logo-icon-nobg.png" alt="mishmish לוגו" />
+      <span>mishmish</span>
+    </a>
+
+    <ul class="navbar-links" id="navLinks">
+      <li><a href="about.html">אודות</a></li>
+      <li><a href="projects.html">פרויקטים</a></li>
+      <li><a href="index.html#skills">כישורים</a></li>
+      <li><a href="index.html#hire">שירותים</a></li>
+      <li><a href="index.html" style="color:var(--orange);">← חזור לדף הבית</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="תפריט">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ===== יצירת קשר ===== -->
+  <section id="contact" style="min-height: 85vh; padding-top: 120px;">
+    <div class="section-inner">
+      <h2 class="section-title">צור קשר</h2>
+      <p class="section-desc">רוצה לדבר, להזמין עבודה, או סתם לשלוח שלום?</p>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>בואו נדבר 👋</h3>
+          <p>
+            רוצה שאבנה לך אתר, כלי, תוסף או כל דבר אחר?
+            יש לך שאלה, באג, או סתם רוצה להגיד שלום?
+            אני שמח לשמוע!
+          </p>
+
+          <div class="contact-links">
+            <a href="mailto:levmishmish14@gmail.com" class="contact-link-item">
+              <span class="contact-link-icon">📧</span>
+              <span>levmishmish14@gmail.com</span>
+            </a>
+            <a href="https://github.com/hsbwnmwbgrnysywnwhtsqwt-lang" target="_blank" class="contact-link-item">
+              <span class="contact-link-icon">🐙</span>
+              <span>GitHub — hsbwnmwbgrnysywnwhtsqwt-lang</span>
+            </a>
+            <a href="https://chromewebstore.google.com/detail/video-controller/pddiobhmolcdlagkfkjafobnkemakmog" target="_blank" class="contact-link-item">
+              <span class="contact-link-icon">🧩</span>
+              <span>Video Controller — Chrome Store</span>
+            </a>
+            <a href="https://wa.me/972535237474" target="_blank" class="contact-link-item">
+              <span class="contact-link-icon">💬</span>
+              <span>WhatsApp — +972-53-523-7474</span>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="name">שם</label>
+            <input type="text" id="name" name="name" placeholder="מה שמך?" required />
+          </div>
+          <div class="form-group">
+            <label for="email">אימייל</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="message">הודעה</label>
+            <textarea id="message" name="message" placeholder="כתוב כאן..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">שלח הודעה ✉️</button>
+          <p class="form-msg" id="formMsg"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="footer-inner">
+      <img class="footer-logo" src="logo-full-nobg.png" alt="mishmish" />
+      <p>
+        <span>mishmish</span> &copy; 2025 &nbsp;·&nbsp; מיכאל לב
+        &nbsp;·&nbsp; Building small tools
+      </p>
+      <div class="footer-links">
+        <a href="index.html">← חזרה לאתר הראשי</a>
+        <a href="mailto:levmishmish14@gmail.com">levmishmish14@gmail.com</a>
+        <a href="https://wa.me/972535237474" target="_blank">💬 WhatsApp</a>
+      </div>
+      <div class="footer-links">
+        <a href="privacy-policy.html">מדיניות פרטיות — Video Controller</a>
+        <a href="mailto:levmishmish14@gmail.com">levmishmish14@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

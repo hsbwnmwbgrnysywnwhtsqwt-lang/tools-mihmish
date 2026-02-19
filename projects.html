@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>פרויקטים | mishmish</title>
+  <meta name="description" content="הפרויקטים של מיכאל לב — אתרים, תוספים, אפליקציות וכלים שנבנו עם AI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="logo-icon-nobg.png" type="image/png" />
+  <link rel="apple-touch-icon" href="logo-icon-nobg.png" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="navbar-brand">
+      <img src="logo-icon-nobg.png" alt="mishmish לוגו" />
+      <span>mishmish</span>
+    </a>
+
+    <ul class="navbar-links" id="navLinks">
+      <li><a href="about.html">אודות</a></li>
+      <li><a href="index.html#skills">כישורים</a></li>
+      <li><a href="index.html#hire">שירותים</a></li>
+      <li><a href="contact.html">צור קשר</a></li>
+      <li><a href="index.html" style="color:var(--orange);">← חזור לדף הבית</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="תפריט">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Hero -->
+  <section class="beta-hero" style="min-height: 35vh; padding: 120px 1rem 3rem;">
+    <div class="beta-hero-glow"></div>
+    <div class="beta-hero-inner">
+      <div class="beta-game-icon">🛠️</div>
+      <div class="beta-label">הפרויקטים שלי</div>
+      <h1>דברים שבניתי</h1>
+      <p class="beta-tagline">אתרים, תוספים, אפליקציות וכלים — עם AI</p>
+    </div>
+  </section>
+
+  <!-- פרויקטים -->
+  <section>
+    <div class="section-inner">
+      <div class="projects-grid">
+
+        <!-- Video Controller -->
+        <div class="project-card featured">
+          <div class="project-card-top">
+            <img src="Video Controller.png" alt="Video Controller Icon" class="project-icon-img" style="width: 45px; height: 45px; object-fit: contain;">
+            <span class="project-ai-badge">AI</span>
+          </div>
+          <div class="project-name">Video Controller</div>
+          <div class="project-desc">
+            תוסף כרום שנותן לך שליטה מלאה על סרטונים בכל אתר —
+            מהירות השמעה, קיצורי מקלדת, ועוד.
+            זמין בחנות הכרום הרשמית.
+          </div>
+          <div class="project-tags">
+            <span class="tag">Chrome Extension</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">AI</span>
+          </div>
+          <div class="project-footer">
+            <a
+              href="https://chromewebstore.google.com/detail/video-controller/pddiobhmolcdlagkfkjafobnkemakmog?authuser=0&hl=iw"
+              target="_blank"
+              class="project-link"
+            >צפה בחנות הכרום ←</a>
+            <a href="privacy-policy.html" class="project-policy-link">מדיניות פרטיות</a>
+          </div>
+        </div>
+
+        <!-- אתר mishmish -->
+        <div class="project-card">
+          <div class="project-card-top">
+            <img src="logo-full-nobg.png" alt="mishmish Logo" class="project-icon-img" style="width: 45px; height: 45px; object-fit: contain;">
+            <span class="project-ai-badge">AI</span>
+          </div>
+          <div class="project-name">אתר mishmish</div>
+          <div class="project-desc">
+            האתר הזה! נבנה עם HTML, CSS, JS ועיצוב שנוצר
+            עם AI. כל דבר — מהלוגו ועד הקוד.
+          </div>
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
+
+        <!-- Memory Master -->
+        <div class="project-card featured">
+          <div class="project-card-top">
+            <img src="memory master.png" alt="Memory Master Icon" class="project-icon-img" style="width: 45px; height: 45px; object-fit: contain;">
+            <span class="project-ai-badge">AI</span>
+          </div>
+          <div class="project-name">Memory Master</div>
+          <div class="project-desc">
+            משחק זיכרון אמוג'י ל-Android — מצא זוגות, אתגר את עצמך.
+            נבנה לחלוטין עם AI ופורסם ב-Google Play.
+          </div>
+          <div class="project-tags">
+            <span class="tag">Expo</span>
+            <span class="tag">Google Play</span>
+            <span class="tag">AI</span>
+          </div>
+          <div class="project-footer">
+            <a
+              href="https://play.google.com/store/apps/details?id=com.levmish.emojimemory"
+              target="_blank"
+              class="project-link"
+            >Google Play ←</a>
+            <a href="beta.html" class="btn btn-primary" style="font-size:0.82rem; padding:0.4rem 1rem;">הצטרף לבטא</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding: 3rem 1rem 5rem;">
+    <div class="section-inner" style="text-align: center;">
+      <h2 class="section-title">רוצה שאבנה לך משהו?</h2>
+      <p class="section-desc">יש לך רעיון? בואו נדבר.</p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:2rem;">
+        <a href="contact.html" class="btn btn-primary">צור קשר ←</a>
+        <a href="index.html#hire" class="btn btn-outline">השירותים שלי ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <img class="footer-logo" src="logo-full-nobg.png" alt="mishmish" />
+      <p>
+        <span>mishmish</span> &copy; 2025 &nbsp;·&nbsp; מיכאל לב &nbsp;·&nbsp; Building small tools
+      </p>
+      <div class="footer-links">
+        <a href="index.html">← חזרה לאתר הראשי</a>
+        <a href="mailto:levmishmish14@gmail.com">levmishmish14@gmail.com</a>
+        <a href="https://wa.me/972535237474" target="_blank">💬 WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
