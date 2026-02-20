@@ -109,14 +109,15 @@ img { max-width: 100%; display: block; }
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  background: none;
+  background: rgba(26, 58, 42, 0.6);
   border: none;
-  padding: 4px;
+  border-radius: 6px;
+  padding: 6px 8px;
 }
 .hamburger span {
   display: block;
   width: 24px;
-  height: 3px;
+  height: 2.5px;
   background: var(--orange);
   border-radius: 2px;
   transition: all 0.3s;
