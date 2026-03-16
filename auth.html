@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>התחברות | mishmish</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="logo-icon-nobg.png" type="image/png" />
+
+  <style>
+    .auth-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 1.5rem 3rem;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 30%, rgba(244,162,45,0.10) 0%, transparent 70%),
+        linear-gradient(160deg, #FDFAF5 0%, #f3ecd8 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .auth-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(var(--border) 1.2px, transparent 1.2px);
+      background-size: 28px 28px;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .auth-card {
+      position: relative;
+      z-index: 1;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg);
+      padding: 2.5rem 2.5rem 2rem;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .auth-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-bottom: 1.8rem;
+    }
+    .auth-logo img { height: 40px; width: 40px; object-fit: contain; }
+    .auth-logo span {
+      color: var(--orange);
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    /* Tabs */
+    .auth-tabs {
+      display: flex;
+      background: var(--bg-card);
+      border-radius: 10px;
+      padding: 4px;
+      margin-bottom: 1.8rem;
+      gap: 4px;
+    }
+    .auth-tab {
+      flex: 1;
+      text-align: center;
+      padding: 0.55rem 0.5rem;
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-light);
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .auth-tab.active {
+      background: #fff;
+      color: var(--text);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Form */
+    .auth-form { display: flex; flex-direction: column; gap: 1rem; }
+    .auth-form.hidden { display: none; }
+
+    .field-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .field-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .field-group input {
+      padding: 0.7rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: 'Rubik', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--bg);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      direction: ltr;
+      text-align: right;
+    }
+    .field-group input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px var(--orange-glow);
+    }
+
+    .forgot-link {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      text-align: left;
+      cursor: pointer;
+      margin-top: -0.4rem;
+      transition: color 0.2s;
+    }
+    .forgot-link:hover { color: var(--orange); }
+
+    .btn-auth {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      font-family: 'Rubik', sans-serif;
+      font-size: 0.97rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      width: 100%;
+    }
+    .btn-auth:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .btn-primary-auth {
+      background: var(--orange);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(244,162,45,0.35);
+    }
+    .btn-primary-auth:hover:not(:disabled) {
+      background: var(--orange-dark);
+      box-shadow: 0 6px 20px rgba(244,162,45,0.45);
+      transform: translateY(-1px);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--text-xlight);
+      font-size: 0.82rem;
+      margin: 0.4rem 0;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .btn-google {
+      background: #fff;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-google:hover:not(:disabled) {
+      border-color: #4285f4;
+      box-shadow: 0 4px 14px rgba(66,133,244,0.15);
+      transform: translateY(-1px);
+    }
+
+    .btn-apple {
+      background: #000;
+      color: #fff;
+    }
+    .btn-apple:hover:not(:disabled) {
+      background: #222;
+      transform: translateY(-1px);
+    }
+
+    /* Google icon */
+    .google-icon {
+      width: 18px; height: 18px; flex-shrink: 0;
+    }
+
+    /* Alert */
+    .auth-alert {
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      font-size: 0.87rem;
+      font-weight: 500;
+      display: none;
+    }
+    .auth-alert.error { background: #fff1f0; color: #c0392b; border: 1px solid #ffc5c0; display: block; }
+    .auth-alert.success { background: #f0fff4; color: #1a7a3a; border: 1px solid #b2f0c8; display: block; }
+    .auth-alert.info { background: #fff8e6; color: #8a5c00; border: 1px solid #fde8a0; display: block; }
+
+    /* Logged-in state */
+    .auth-logged-in { display: none; text-align: center; }
+    .auth-logged-in.show { display: block; }
+    .auth-card.is-logged-in .auth-main { display: none; }
+    .user-avatar {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      background: var(--orange-glow);
+      border: 3px solid var(--orange);
+      margin: 0 auto 1rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      overflow: hidden;
+    }
+    .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .user-name { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
+    .user-email { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1.5rem; }
+    .btn-signout {
+      background: var(--bg-card);
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn-signout:hover { background: #fff1f0; border-color: #ffc5c0; color: #c0392b; }
+
+    @media (max-width: 480px) {
+      .auth-card { padding: 2rem 1.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="navbar-brand">
+      <img src="logo-icon-nobg.png" alt="mishmish לוגו" />
+      <span>mishmish</span>
+    </a>
+    <ul class="navbar-links" id="navLinks">
+      <li><a href="about.html">אודות</a></li>
+      <li><a href="contact.html">צור קשר</a></li>
+      <li><a href="projects.html">פרויקטים</a></li>
+      <li><a href="index.html#skills">כישורים</a></li>
+      <li><a href="index.html#hire">שירותים</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="תפריט">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Auth Page -->
+  <main class="auth-page">
+    <div class="auth-dots"></div>
+
+    <div class="auth-card" id="authCard">
+
+      <!-- Logged-in state -->
+      <div class="auth-logged-in" id="loggedInView">
+        <div class="user-avatar" id="userAvatar">👤</div>
+        <div class="user-name" id="userName">שלום!</div>
+        <div class="user-email" id="userEmailDisplay"></div>
+        <button class="btn-auth btn-signout" id="signOutBtn">התנתקות</button>
+      </div>
+
+      <!-- Auth forms -->
+      <div class="auth-main" id="authMain">
+        <div class="auth-logo">
+          <img src="logo-icon-nobg.png" alt="mishmish" />
+          <span>mishmish</span>
+        </div>
+
+        <!-- Tabs -->
+        <div class="auth-tabs">
+          <div class="auth-tab active" id="tabLogin" onclick="switchTab('login')">התחברות</div>
+          <div class="auth-tab" id="tabRegister" onclick="switchTab('register')">הרשמה</div>
+        </div>
+
+        <!-- Alert -->
+        <div class="auth-alert" id="authAlert"></div>
+
+        <!-- Login Form -->
+        <form class="auth-form" id="loginForm" onsubmit="handleEmailLogin(event)">
+          <div class="field-group">
+            <label for="loginEmail">אימייל</label>
+            <input type="email" id="loginEmail" placeholder="you@example.com" required autocomplete="email" />
+          </div>
+          <div class="field-group">
+            <label for="loginPassword">סיסמה</label>
+            <input type="password" id="loginPassword" placeholder="••••••••" required autocomplete="current-password" />
+          </div>
+          <span class="forgot-link" onclick="handleForgotPassword()">שכחת סיסמה?</span>
+          <button type="submit" class="btn-auth btn-primary-auth" id="loginBtn">כניסה</button>
+        </form>
+
+        <!-- Register Form -->
+        <form class="auth-form hidden" id="registerForm" onsubmit="handleEmailRegister(event)">
+          <div class="field-group">
+            <label for="registerName">שם מלא</label>
+            <input type="text" id="registerName" placeholder="מיכאל לב" required autocomplete="name" dir="rtl" style="text-align:right" />
+          </div>
+          <div class="field-group">
+            <label for="registerEmail">אימייל</label>
+            <input type="email" id="registerEmail" placeholder="you@example.com" required autocomplete="email" />
+          </div>
+          <div class="field-group">
+            <label for="registerPassword">סיסמה</label>
+            <input type="password" id="registerPassword" placeholder="לפחות 6 תווים" required autocomplete="new-password" minlength="6" />
+          </div>
+          <button type="submit" class="btn-auth btn-primary-auth" id="registerBtn">הרשמה</button>
+        </form>
+
+        <!-- Social -->
+        <div class="divider">או</div>
+
+        <div style="display:flex; flex-direction:column; gap:0.7rem;">
+          <button class="btn-auth btn-google" onclick="handleGoogle()">
+            <svg class="google-icon" viewBox="0 0 48 48">
+              <path fill="#EA4335" d="M24 9.5c3.1 0 5.8 1.1 8 2.9l6-6C34.5 3.3 29.6 1 24 1 14.8 1 7 6.7 3.7 14.7l7 5.4C12.4 13.6 17.7 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.4 5.7c4.3-4 6.8-9.9 6.8-16.9z"/>
+              <path fill="#FBBC05" d="M10.7 28.6A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.1.8-4.6l-7-5.4A23.9 23.9 0 0 0 .1 24c0 3.9.9 7.5 2.6 10.8l8-6.2z"/>
+              <path fill="#34A853" d="M24 47c5.4 0 10-1.8 13.3-4.8l-7.4-5.7c-1.8 1.2-4.1 1.9-5.9 1.9-6.3 0-11.6-4.2-13.3-9.8l-8 6.2C7 41.3 14.8 47 24 47z"/>
+            </svg>
+            המשך עם Google
+          </button>
+
+          <button class="btn-auth btn-apple" onclick="handleApple()">
+            <svg width="18" height="18" viewBox="0 0 814 1000" fill="white">
+              <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-57.8-155.5-127.4C46 383.1 22 193.6 22 126.1c0-88 57.4-134.8 108.9-134.8 43.3 0 82.1 30 109.3 30 26 0 67.5-32.1 119.3-32.1h4.9c46.2 0 125 19.4 168.2 74.1zM547.3 55c11.7-16.2 25.1-33.1 25.1-53.9 0-2.6-.3-5.2-.6-7.8-23.4.9-51 15.6-68 35.3-15.2 17.3-28.9 35.7-28.9 57.3 0 2.9.3 5.8.6 8.7 2.9.3 5.8.6 9.1.6 21.5 0 46.6-14 62.7-40.2z"/>
+            </svg>
+            המשך עם Apple
+          </button>
+        </div>
+
+      </div><!-- /auth-main -->
+    </div><!-- /auth-card -->
+  </main>
+
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js';
+    import {
+      getAuth,
+      onAuthStateChanged,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword,
+      sendPasswordResetEmail,
+      signInWithPopup,
+      GoogleAuthProvider,
+      OAuthProvider,
+      updateProfile,
+      signOut
+    } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js';
+
+    // ─── Firebase config ───
+    const firebaseConfig = {
+      apiKey: "AIzaSyCBrZyB3Ul9kpKqRwm3m9G3Lid5wMp7zlQ",
+      authDomain: "gen-lang-client-0469746222.firebaseapp.com",
+      projectId: "gen-lang-client-0469746222",
+      storageBucket: "gen-lang-client-0469746222.firebasestorage.app",
+      messagingSenderId: "1004362127294",
+      appId: "1:1004362127294:web:607f6fed15b75bb7a60bef",
+      measurementId: "G-QBSVF13LB1"
+    };
+
+    const app  = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    auth.languageCode = 'he';
+
+    const REDIRECT_AFTER_LOGIN = 'index.html';
+    const IS_APP = new URLSearchParams(window.location.search).get('mode') === 'app';
+
+    // ─── Send result back to React Native app ───
+    function notifyApp(user) {
+      const payload = JSON.stringify({
+        type: 'auth_success',
+        uid:   user.uid,
+        name:  user.displayName || user.email.split('@')[0],
+        email: user.email,
+        photo: user.photoURL || null,
+      });
+      if (window.ReactNativeWebView) {
+        window.ReactNativeWebView.postMessage(payload);
+      }
+    }
+
+    // ─── Auth state listener ───
+    onAuthStateChanged(auth, (user) => {
+      const mainEl    = document.getElementById('authMain');
+      const loggedEl  = document.getElementById('loggedInView');
+      if (user) {
+        if (IS_APP) { notifyApp(user); return; }
+        mainEl.style.display   = 'none';
+        loggedEl.style.display = 'block';
+        document.getElementById('userName').textContent      = user.displayName || 'שלום!';
+        document.getElementById('userEmailDisplay').textContent = user.email || '';
+        const avatarEl = document.getElementById('userAvatar');
+        if (user.photoURL) {
+          avatarEl.innerHTML = `<img src="${user.photoURL}" alt="avatar" referrerpolicy="no-referrer" />`;
+        } else {
+          avatarEl.textContent = (user.displayName || user.email || '?')[0].toUpperCase();
+        }
+      } else {
+        mainEl.style.display   = '';
+        loggedEl.style.display = 'none';
+      }
+    });
+
+    // ─── Helpers ───
+    function showAlert(msg, type = 'error') {
+      const el = document.getElementById('authAlert');
+      el.textContent = msg;
+      el.className = `auth-alert ${type}`;
+    }
+    function clearAlert() {
+      const el = document.getElementById('authAlert');
+      el.className = 'auth-alert';
+      el.textContent = '';
+    }
+    function setLoading(btnId, loading) {
+      const btn = document.getElementById(btnId);
+      if (!btn) return;
+      btn.disabled = loading;
+      btn.textContent = loading ? '...' : btn.dataset.label;
+    }
+    function hebrewError(code) {
+      const map = {
+        'auth/invalid-email':          'כתובת אימייל לא תקינה',
+        'auth/user-not-found':         'משתמש לא נמצא',
+        'auth/wrong-password':         'סיסמה שגויה',
+        'auth/invalid-credential':     'אימייל או סיסמה שגויים',
+        'auth/email-already-in-use':   'האימייל הזה כבר רשום',
+        'auth/weak-password':          'סיסמה חלשה מדי (לפחות 6 תווים)',
+        'auth/too-many-requests':      'יותר מדי ניסיונות — נסה שוב מאוחר יותר',
+        'auth/popup-closed-by-user':   'החלון נסגר לפני השלמת ההתחברות',
+        'auth/cancelled-popup-request':'רק חלון אחד יכול להיות פתוח בו-זמנית',
+        'auth/popup-blocked':          'הדפדפן חסם את החלון — אפשר popups לאתר זה',
+        'auth/network-request-failed': 'שגיאת רשת — בדוק חיבור לאינטרנט',
+        'auth/operation-not-allowed':  'שיטת התחברות זו אינה מופעלת ב-Firebase Console',
+      };
+      return map[code] || 'שגיאה — נסה שוב';
+    }
+
+    // ─── Tab switch ───
+    window.switchTab = function(tab) {
+      clearAlert();
+      document.getElementById('loginForm').classList.toggle('hidden',    tab !== 'login');
+      document.getElementById('registerForm').classList.toggle('hidden', tab !== 'register');
+      document.getElementById('tabLogin').classList.toggle('active',    tab === 'login');
+      document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
+    };
+
+    // ─── Email login ───
+    window.handleEmailLogin = async function(e) {
+      e.preventDefault();
+      clearAlert();
+      const email    = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      const btn      = document.getElementById('loginBtn');
+      btn.disabled   = true;
+      const orig     = btn.textContent;
+      btn.textContent = '...';
+      try {
+        const { user } = await signInWithEmailAndPassword(auth, email, password);
+        showAlert('התחברת בהצלחה!', 'success');
+        if (IS_APP) { notifyApp(user); return; }
+        setTimeout(() => { window.location.href = REDIRECT_AFTER_LOGIN; }, 1200);
+      } catch (err) {
+        showAlert(hebrewError(err.code));
+        btn.disabled    = false;
+        btn.textContent = orig;
+      }
+    };
+
+    // ─── Email register ───
+    window.handleEmailRegister = async function(e) {
+      e.preventDefault();
+      clearAlert();
+      const name     = document.getElementById('registerName').value.trim();
+      const email    = document.getElementById('registerEmail').value.trim();
+      const password = document.getElementById('registerPassword').value;
+      const btn      = document.getElementById('registerBtn');
+      btn.disabled   = true;
+      const orig     = btn.textContent;
+      btn.textContent = '...';
+      try {
+        const { user } = await createUserWithEmailAndPassword(auth, email, password);
+        if (name) await updateProfile(user, { displayName: name });
+        showAlert('נרשמת בהצלחה!', 'success');
+        if (IS_APP) { notifyApp(user); return; }
+        setTimeout(() => { window.location.href = REDIRECT_AFTER_LOGIN; }, 1200);
+      } catch (err) {
+        showAlert(hebrewError(err.code));
+        btn.disabled    = false;
+        btn.textContent = orig;
+      }
+    };
+
+    // ─── Forgot password ───
+    window.handleForgotPassword = async function() {
+      clearAlert();
+      const email = document.getElementById('loginEmail').value.trim();
+      if (!email) { showAlert('הכנס אימייל בשדה למעלה ואז לחץ שוב', 'info'); return; }
+      try {
+        await sendPasswordResetEmail(auth, email);
+        showAlert('שלחנו לך קישור לאיפוס סיסמה — בדוק את המייל', 'success');
+      } catch (err) {
+        showAlert(hebrewError(err.code));
+      }
+    };
+
+    // ─── Google ───
+    window.handleGoogle = async function() {
+      clearAlert();
+      try {
+        const provider = new GoogleAuthProvider();
+        const { user } = await signInWithPopup(auth, provider);
+        showAlert('התחברת בהצלחה!', 'success');
+        if (IS_APP) { notifyApp(user); return; }
+        setTimeout(() => { window.location.href = REDIRECT_AFTER_LOGIN; }, 1200);
+      } catch (err) {
+        if (err.code !== 'auth/popup-closed-by-user') showAlert(hebrewError(err.code));
+      }
+    };
+
+    // ─── Apple ───
+    window.handleApple = async function() {
+      clearAlert();
+      try {
+        const provider = new OAuthProvider('apple.com');
+        provider.addScope('email');
+        provider.addScope('name');
+        provider.setCustomParameters({ locale: 'he' });
+        const { user } = await signInWithPopup(auth, provider);
+        showAlert('התחברת בהצלחה!', 'success');
+        if (IS_APP) { notifyApp(user); return; }
+        setTimeout(() => { window.location.href = REDIRECT_AFTER_LOGIN; }, 1200);
+      } catch (err) {
+        if (err.code !== 'auth/popup-closed-by-user') showAlert(hebrewError(err.code));
+      }
+    };
+
+    // ─── Sign out ───
+    document.getElementById('signOutBtn').addEventListener('click', async () => {
+      await signOut(auth);
+    });
+
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
