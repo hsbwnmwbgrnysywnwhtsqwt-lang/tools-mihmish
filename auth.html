@@ -396,29 +396,48 @@
     function notifyApp(user) {
       const name  = user.displayName || (user.email ? user.email.split('@')[0] : 'Player');
       const email = user.email || '';
-      // If opened via openAuthSessionAsync — redirect back with params
+
       if (APP_REDIRECT) {
-        // Clear sessionStorage — redirect is happening now
         sessionStorage.removeItem('koc_is_app');
         sessionStorage.removeItem('koc_app_redirect');
-        const sep = APP_REDIRECT.includes('?') ? '&' : '?';
-        window.location.href =
-          APP_REDIRECT + sep +
+        const sep      = APP_REDIRECT.includes('?') ? '&' : '?';
+        const deepLink = APP_REDIRECT + sep +
           `uid=${encodeURIComponent(user.uid)}` +
           `&name=${encodeURIComponent(name)}` +
           `&email=${encodeURIComponent(email)}`;
+
+        // Show success screen with manual "Return to App" button.
+        // Also attempt automatic redirect — whichever works first wins.
+        showAppSuccess(name, deepLink);
+        window.location.href = deepLink;
         return;
       }
       // Fallback: WebView postMessage
       if (window.ReactNativeWebView) {
         window.ReactNativeWebView.postMessage(JSON.stringify({
-          type: 'auth_success',
-          uid:   user.uid,
-          name,
-          email: user.email,
-          photo: user.photoURL || null,
+          type: 'auth_success', uid: user.uid, name, email, photo: user.photoURL || null,
         }));
       }
+    }
+
+    // ─── Success screen shown after login in app mode ───
+    function showAppSuccess(name, deepLink) {
+      const card = document.getElementById('authCard');
+      card.innerHTML = `
+        <div style="text-align:center;padding:1.5rem 0;display:flex;flex-direction:column;align-items:center;gap:1.2rem">
+          <div style="font-size:3.5rem">✅</div>
+          <div style="font-size:1.15rem;font-weight:700;color:#1a1a1a">שלום, ${name}!</div>
+          <div style="font-size:0.9rem;color:#777">התחברת בהצלחה — לחץ להמשיך למשחק</div>
+          <a href="${deepLink}"
+             style="display:inline-block;margin-top:0.5rem;padding:0.85rem 2.2rem;
+                    background:#f4a22d;color:#fff;border-radius:12px;font-weight:700;
+                    font-size:1rem;text-decoration:none;box-shadow:0 4px 14px rgba(244,162,45,0.4)">
+            ▶ חזור למשחק
+          </a>
+          <div style="font-size:0.78rem;color:#aaa;margin-top:-0.4rem">
+            אם המשחק לא נפתח אוטומטית — לחץ על הכפתור למעלה
+          </div>
+        </div>`;
     }
 
     // ─── Handle redirect result (Google/Apple in app mode) ───
