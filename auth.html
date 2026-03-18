@@ -375,9 +375,22 @@
     auth.languageCode = 'he';
 
     const REDIRECT_AFTER_LOGIN = 'index.html';
-    const params   = new URLSearchParams(window.location.search);
-    const IS_APP   = params.get('mode') === 'app';
-    const APP_REDIRECT = params.get('redirect'); // deep link URL from the app
+    const params = new URLSearchParams(window.location.search);
+
+    // Survive the Google redirect — params are lost after signInWithRedirect.
+    // Restore from sessionStorage if they're missing from the URL.
+    let IS_APP       = params.get('mode') === 'app';
+    let APP_REDIRECT = params.get('redirect');
+
+    if (!IS_APP && sessionStorage.getItem('koc_is_app') === '1') {
+      IS_APP       = true;
+      APP_REDIRECT = sessionStorage.getItem('koc_app_redirect') || '';
+    }
+    // Keep sessionStorage fresh while we're in app mode
+    if (IS_APP) {
+      sessionStorage.setItem('koc_is_app', '1');
+      if (APP_REDIRECT) sessionStorage.setItem('koc_app_redirect', APP_REDIRECT);
+    }
 
     // ─── Send result back to React Native app ───
     function notifyApp(user) {
