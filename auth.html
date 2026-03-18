@@ -377,19 +377,19 @@
     const REDIRECT_AFTER_LOGIN = 'index.html';
     const params = new URLSearchParams(window.location.search);
 
-    // Survive the Google redirect — params are lost after signInWithRedirect.
-    // Restore from sessionStorage if they're missing from the URL.
+    // Survive the Google signInWithRedirect cycle.
+    // sessionStorage doesn't survive cross-origin redirects in ASWebAuthenticationSession,
+    // so we use localStorage which persists for the whole browser session.
     let IS_APP       = params.get('mode') === 'app';
     let APP_REDIRECT = params.get('redirect');
 
-    if (!IS_APP && sessionStorage.getItem('koc_is_app') === '1') {
+    if (!IS_APP && localStorage.getItem('koc_is_app') === '1') {
       IS_APP       = true;
-      APP_REDIRECT = sessionStorage.getItem('koc_app_redirect') || '';
+      APP_REDIRECT = localStorage.getItem('koc_app_redirect') || '';
     }
-    // Keep sessionStorage fresh while we're in app mode
     if (IS_APP) {
-      sessionStorage.setItem('koc_is_app', '1');
-      if (APP_REDIRECT) sessionStorage.setItem('koc_app_redirect', APP_REDIRECT);
+      localStorage.setItem('koc_is_app', '1');
+      if (APP_REDIRECT) localStorage.setItem('koc_app_redirect', APP_REDIRECT);
     }
 
     // ─── Send result back to React Native app ───
@@ -398,8 +398,8 @@
       const email = user.email || '';
 
       if (APP_REDIRECT) {
-        sessionStorage.removeItem('koc_is_app');
-        sessionStorage.removeItem('koc_app_redirect');
+        localStorage.removeItem('koc_is_app');
+        localStorage.removeItem('koc_app_redirect');
         const sep      = APP_REDIRECT.includes('?') ? '&' : '?';
         const deepLink = APP_REDIRECT + sep +
           `uid=${encodeURIComponent(user.uid)}` +
