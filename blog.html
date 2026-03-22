@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>בלוג | mishmish — מאמרים על פיתוח, AI וכלים</title>
+  <meta name="description" content="מאמרים ומדריכים על פיתוח אתרים, תוספי כרום, AI, ו-React Native — מאת מיכאל לב (mishmish). טיפים מעשיים למפתחים ולאנשים שרוצים ללמוד לבנות דברים." />
+  <meta name="keywords" content="בלוג פיתוח, מאמרי AI, תוסף כרום איך בונים, React Native למתחילים, כלי AI למפתחים, mishmish בלוג, מיכאל לב, פיתוח אתרים ישראל" />
+  <link rel="canonical" href="https://www.tools-mishmish.com/blog.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="בלוג mishmish — מאמרים על פיתוח וAI" />
+  <meta property="og:description" content="מאמרים ומדריכים על פיתוח אתרים, תוספי כרום, AI, ו-React Native מאת מיכאל לב." />
+  <meta property="og:image" content="https://www.tools-mishmish.com/logo-full.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.tools-mishmish.com/blog.html" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:site_name" content="mishmish" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="logo-icon-nobg.png" type="image/png" />
+  <link rel="apple-touch-icon" href="logo-icon-nobg.png" />
+  <meta name="google-adsense-account" content="ca-pub-3119132036372710">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3119132036372710" crossorigin="anonymous"></script>
+
+  <style>
+    .blog-list { display: flex; flex-direction: column; gap: 2rem; margin-top: 2rem; }
+    .blog-card {
+      background: var(--card-bg, #1a1a2e);
+      border: 1px solid var(--border, rgba(255,255,255,0.08));
+      border-radius: 16px;
+      padding: 2rem;
+      transition: border-color 0.2s;
+    }
+    .blog-card:hover { border-color: var(--orange, #f4a22d); }
+    .blog-card h2 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .blog-card h2 a { color: inherit; text-decoration: none; }
+    .blog-card h2 a:hover { color: var(--orange, #f4a22d); }
+    .blog-meta { color: var(--text-light, #aaa); font-size: 0.85rem; margin-bottom: 1rem; }
+    .blog-card p { line-height: 1.8; color: var(--text-light, #ccc); }
+    .blog-read-more {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--orange, #f4a22d);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+    .blog-read-more:hover { text-decoration: underline; }
+    .blog-tag {
+      display: inline-block;
+      background: rgba(244,162,45,0.12);
+      color: var(--orange, #f4a22d);
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: 0.78rem;
+      margin-left: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="navbar-brand">
+      <img src="logo-icon-nobg.png" alt="mishmish לוגו" />
+      <span>mishmish</span>
+    </a>
+    <ul class="navbar-links" id="navLinks">
+      <li><a href="about.html">אודות</a></li>
+      <li><a href="contact.html">צור קשר</a></li>
+      <li><a href="projects.html">פרויקטים</a></li>
+      <li><a href="blog.html" style="color:var(--orange);">בלוג</a></li>
+      <li><a href="index.html">דף הבית</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="תפריט">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Hero -->
+  <section style="padding: 6rem 1rem 2rem; text-align: center;">
+    <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem;">בלוג mishmish</h1>
+    <p style="color: var(--text-light); max-width: 600px; margin: 0 auto 1rem;">מאמרים על פיתוח, AI, וכיצד לבנות כלים שימושיים</p>
+  </section>
+
+  <!-- Blog Posts -->
+  <main>
+    <div class="section-inner" style="max-width: 820px; padding-bottom: 5rem;">
+      <div class="blog-list">
+
+        <!-- Article 1 -->
+        <article class="blog-card" id="post-ai-memory-game">
+          <div class="blog-meta">
+            <span>מרץ 2025</span>
+            <span class="blog-tag">AI</span>
+            <span class="blog-tag">React Native</span>
+          </div>
+          <h2><a href="#post-ai-memory-game">איך בניתי משחק אנדרואיד שלם עם AI — ובלי ניסיון קודם ב-React Native</a></h2>
+          <div style="line-height: 1.9; color: var(--text-light);">
+            <p>כשהחלטתי לבנות את Memory Master, לא ידעתי כמעט כלום על React Native. ידעתי JavaScript, ידעתי HTML ו-CSS, ו... זהו. אבל היה לי רעיון: משחק זיכרון אמוג'י פשוט, נקי, שאפשר להוריד בחינם מ-Google Play.</p>
+            <p style="margin-top: 1rem;">המפתח לכל הסיפור היה שימוש ב-AI כ"שותף לפיתוח". במקום לשבת שעות על תיעוד של Expo, פשוט שאלתי: "תבנה לי component של לוח משחק זיכרון עם אנימציות הפיכת כרטיסים". קיבלתי קוד עובד תוך דקות.</p>
+            <p style="margin-top: 1rem;"><strong>שלב 1 — הגדרת הפרויקט:</strong> התחלתי עם Expo — הכלי שמאפשר לבנות אפליקציות React Native בלי לדאוג לקונפיגורציה מסובכת. פקודה אחת: <code>npx create-expo-app memory-master</code> — ויש לך שלד עובד.</p>
+            <p style="margin-top: 1rem;"><strong>שלב 2 — הלוגיקה של המשחק:</strong> משחק זיכרון הוא לכאורה פשוט: יש מערך של כרטיסים, כל כרטיס יש לו זוג, לוחצים על שניים — אם זהים נשארים גלויים, אם לא — מתהפכים חזרה. אבל הפרטים הקטנים הם שהופכים את זה למאתגר: timing של האנימציות, מניעת לחיצה כפולה, שמירת שיאים ב-AsyncStorage.</p>
+            <p style="margin-top: 1rem;"><strong>שלב 3 — פרסום ב-Google Play:</strong> זה החלק שהכי הפחיד אותי. צריך חשבון Play Console (25 דולר חד-פעמי), APK חתום, screenshots, תיאור, ומדיניות פרטיות. AI עזר לי לנסח את מדיניות הפרטיות תוך שניות.</p>
+            <p style="margin-top: 1rem;"><strong>הלקח הכי חשוב:</strong> AI לא מחליף ידע — אבל הוא מקצר את עקומת הלמידה בצורה דרמטית. במקום שבועות ללמוד React Native מ-scratch, היה לי אפליקציה עובדת בתוך ימים ספורים. כל באג שנתקלתי בו — שאלתי, קיבלתי הסבר, הבנתי למה, והמשכתי.</p>
+          </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="blog-card" id="post-chrome-extension-guide">
+          <div class="blog-meta">
+            <span>פברואר 2025</span>
+            <span class="blog-tag">Chrome Extension</span>
+            <span class="blog-tag">JavaScript</span>
+          </div>
+          <h2><a href="#post-chrome-extension-guide">מה זה תוסף כרום ואיך בונים אחד — מדריך מעשי למתחילים</a></h2>
+          <div style="line-height: 1.9; color: var(--text-light);">
+            <p>תוסף כרום (Chrome Extension) הוא פשוט תיקייה עם קבצי HTML, CSS ו-JavaScript שגוגל כרום יכול "לאמץ" ולהפעיל. אין כאן שום מסגרת מיוחדת, אין server, אין Docker — רק קבצים רגילים עם קובץ הגדרות אחד בשם <code>manifest.json</code>.</p>
+            <p style="margin-top: 1rem;"><strong>הקובץ הכי חשוב — manifest.json:</strong> זה ה"תעודת הזהות" של התוסף. הוא אומר לכרום: מה שם התוסף, מה הגרסה, אילו הרשאות הוא צריך, ואיזה קבצים להריץ. לדוגמה:</p>
+            <pre style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; margin-top: 0.75rem;"><code>{
+  "manifest_version": 3,
+  "name": "My First Extension",
+  "version": "1.0",
+  "permissions": ["activeTab"],
+  "content_scripts": [{
+    "matches": ["&lt;all_urls&gt;"],
+    "js": ["content.js"]
+  }]
+}</code></pre>
+            <p style="margin-top: 1rem;"><strong>סוגי קבצים בתוסף:</strong></p>
+            <ul style="margin: 0.5rem 0 0 1.5rem; line-height: 2.2;">
+              <li><strong>content.js</strong> — רץ בתוך דפי האינטרנט שאתם גולשים בהם. יכול לקרוא ולשנות את ה-DOM.</li>
+              <li><strong>background.js</strong> — רץ ברקע, ב-"service worker" נפרד. טוב לאירועים כמו לחיצה על האייקון.</li>
+              <li><strong>popup.html</strong> — הממשק הקטן שנפתח כשלוחצים על האייקון של התוסף.</li>
+            </ul>
+            <p style="margin-top: 1rem;"><strong>איך מתקינים תוסף בפיתוח:</strong> פותחים כרום, הולכים ל-<code>chrome://extensions</code>, מפעילים "מצב מפתח" (Developer mode), לוחצים "Load unpacked" ובוחרים את התיקייה. זהו.</p>
+            <p style="margin-top: 1rem;"><strong>Video Controller</strong> — התוסף שבניתי — עושה בדיוק את זה: content.js שלו רץ בכל דף, מזהה תגי <code>&lt;video&gt;</code>, ומוסיף ממשק שליטה צף מעל הסרטון. מהירות השמעה, קיצורי מקלדת, הכל. כ-200 שורות JavaScript נקי.</p>
+            <p style="margin-top: 1rem;"><strong>פרסום ב-Chrome Web Store:</strong> 5 דולר חד-פעמי להרשמה, uploads של ZIP עם כל הקבצים, screenshots, ותיאור. גוגל בודקת את התוסף (לרוב כמה ימים) ואז הוא חי.</p>
+          </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="blog-card" id="post-ai-tools-2025">
+          <div class="blog-meta">
+            <span>ינואר 2025</span>
+            <span class="blog-tag">AI</span>
+            <span class="blog-tag">כלים</span>
+          </div>
+          <h2><a href="#post-ai-tools-2025">5 כלי AI שכל מפתח צריך להכיר ב-2025</a></h2>
+          <div style="line-height: 1.9; color: var(--text-light);">
+            <p>בשלוש השנים האחרונות, AI עבר מ"כלי ניסיוני" ל"חלק בלתי נפרד מיום העבודה שלי". הנה 5 כלים שאני משתמש בהם כמעט מדי יום, ולמה כל אחד מהם שווה את הזמן ללמוד:</p>
+            <p style="margin-top: 1rem;"><strong>1. Claude (Anthropic)</strong><br/>
+            Claude הוא עוזר הקוד שאני מוצא הכי שימושי לפרויקטים מורכבים. הוא טוב במיוחד בהסברים — לא רק כותב קוד, אלא מסביר למה הוא כתב אותו כך. כשאני תקוע בבאג מוזר, Claude מוצא לי אותו ב-30 שניות ומסביר מה השתבש.</p>
+            <p style="margin-top: 1rem;"><strong>2. Cursor (עורך קוד עם AI)</strong><br/>
+            Cursor הוא VS Code עם AI מובנה. הכי שימושי: "Tab-complete" חכם שמסיים שורות שלמות, ו-Cmd+K שמאפשר לך לכתוב "refactor this function to use async/await" ולקבל את השינוי ישירות בקוד.</p>
+            <p style="margin-top: 1rem;"><strong>3. Midjourney / DALL-E (עיצוב ויזואלי)</strong><br/>
+            כמפתח שאין לו מעצב, AI לתמונות הציל אותי פעמים רבות. הלוגו של mishmish, האייקון של Memory Master, תמונות לפרויקטים — כולם נוצרו עם AI תוך דקות. Midjourney נותן תוצאות יותר "אמנותיות", DALL-E (של OpenAI) יותר דיוק בפרטים ספציפיים.</p>
+            <p style="margin-top: 1rem;"><strong>4. GitHub Copilot</strong><br/>
+            אם אתם עובדים הרבה בתוך VS Code הרגיל, Copilot הוא השלמה אוטומטית רמה 10. מזהה patterns בקוד שלכם ומציע המשכים רלוונטיים. שימושי במיוחד ל-boilerplate — כשצריך לכתוב 10 functions דומות, הוא כותב 9 מהן אוטומטית.</p>
+            <p style="margin-top: 1rem;"><strong>5. Vercel AI SDK</strong><br/>
+            לא כלי לשימוש ישיר, אלא ספרייה לבנות עם AI. אם אתם רוצים לשלב AI בתוך אפליקציה שאתם בונים — chat bots, תשובות אוטומטיות, עיבוד טקסט — Vercel AI SDK מפשט את הקריאות ל-Claude/GPT/Gemini לשורות קוד בודדות.</p>
+            <p style="margin-top: 1rem;"><strong>המסקנה:</strong> AI לא מחליף את הצורך להבין מה אתם בונים. אבל הוא מוריד את ה-friction של כל שלב: פחות זמן על syntax, פחות זמן על דיבאגינג בסיסי, יותר זמן על הדברים שבאמת דורשים חשיבה.</p>
+          </div>
+        </article>
+
+        <!-- Article 4 -->
+        <article class="blog-card" id="post-small-business-website">
+          <div class="blog-meta">
+            <span>ינואר 2025</span>
+            <span class="blog-tag">עסקים</span>
+            <span class="blog-tag">אתרים</span>
+          </div>
+          <h2><a href="#post-small-business-website">למה כל עסק קטן חייב אתר עצמאי — ולא רק דף פייסבוק</a></h2>
+          <div style="line-height: 1.9; color: var(--text-light);">
+            <p>אחת השאלות הנפוצות שאני מקבל מבעלי עסקים קטנים היא: "יש לי דף פייסבוק/אינסטגרם עם 2,000 עוקבים — למה אני צריך אתר?" זאת שאלה מצוינת, ויש לה תשובה ברורה.</p>
+            <p style="margin-top: 1rem;"><strong>סיבה 1 — אתה לא הבעלים של דף הפייסבוק שלך</strong><br/>
+            פייסבוק יכולה להחליט מחר לחסום את הדף שלך, לשנות את האלגוריתם, לגבות כסף על הגעה אורגנית, או פשוט לסגור את השירות. אתה בנית את הנכס הדיגיטלי שלך על קרקע שלא שייכת לך. אתר עצמאי? זה שלך. תמיד.</p>
+            <p style="margin-top: 1rem;"><strong>סיבה 2 — גוגל לא מאנדקס פוסטים בפייסבוק</strong><br/>
+            כשמישהו מחפש "ספר שיער בתל אביב" בגוגל, הוא לא יגיע לדף הפייסבוק שלך. גוגל לא יכולה לסרוק תוכן שנמצא בפלטפורמות סגורות. אתר עם SEO טוב — אתם מופיעים בחיפושים. דף פייסבוק — לא.</p>
+            <p style="margin-top: 1rem;"><strong>סיבה 3 — מקצועיות ואמינות</strong><br/>
+            לקוח שמחפש שירות ב-2025 צופה לראות אתר. זה לא אומר שצריך אתר ב-10 עמודים — גם דף נחיתה אחד עם מידע ברור, תמונות מקצועיות וטופס פניה עושה את העבודה. אתר אומר: "אני רציני בעסק שלי".</p>
+            <p style="margin-top: 1rem;"><strong>סיבה 4 — מדידה ושיפור</strong><br/>
+            עם Google Analytics על האתר שלך, אתה רואה: כמה אנשים ביקרו, מאיפה הגיעו, באיזה דף עצרו, כמה זמן בילו. פייסבוק נותן לך נתונים מוגבלים ורק מה שבא לה. האתר שלך — תמונה מלאה.</p>
+            <p style="margin-top: 1rem;"><strong>כמה עולה אתר פשוט?</strong><br/>
+            אתר דף-נחיתה בסיסי עם Vercel (hosting בחינם) + דומיין (כ-50 ש"ח לשנה) + שעות עבודה של מפתח — אפשר להגיע לפתרון מלא ב-500-1500 ש"ח. ההשקעה מחזירה את עצמה מלקוח אחד שמצא אתכם בגוגל.</p>
+          </div>
+        </article>
+
+        <!-- Article 5 -->
+        <article class="blog-card" id="post-memory-game-benefits">
+          <div class="blog-meta">
+            <span>דצמבר 2024</span>
+            <span class="blog-tag">זיכרון</span>
+            <span class="blog-tag">משחקים</span>
+          </div>
+          <h2><a href="#post-memory-game-benefits">היתרונות הקוגניטיביים של משחקי זיכרון — מה המדע אומר</a></h2>
+          <div style="line-height: 1.9; color: var(--text-light);">
+            <p>כשבניתי את Memory Master, חשבתי שזה "רק משחק". אבל ככל שחקרתי יותר, הבנתי שמשחקי זיכרון מבוססים על מדע מוצק. הנה מה שמחקרים על אימון קוגניטיבי אומרים על הסוגה הזאת.</p>
+            <p style="margin-top: 1rem;"><strong>מה זה בעצם "משחק זיכרון"?</strong><br/>
+            משחק זיכרון (Concentration game) הוא משחק שבו מערכת כרטיסים הפוכים פרושה על שולחן (או מסך). כל שני כרטיסים חולקים תמונה זהה. המשחק: לגלות כרטיס, לזכור את מיקומו, ולמצוא את הזוג שלו. ככל שיש יותר כרטיסים — הלוח גדול יותר והזיכרון נדרש יותר.</p>
+            <p style="margin-top: 1rem;"><strong>זיכרון עבודה (Working Memory)</strong><br/>
+            הכישור המרכזי שמשחקי זיכרון מאמנים הוא "זיכרון עבודה" — היכולת להחזיק מידע זמני בראש ולתפעל אותו. מחקרים מראים שזיכרון עבודה חזק קשור לביצועים אקדמיים, ליכולת פתרון בעיות ולמיקוד כללי.</p>
+            <p style="margin-top: 1rem;"><strong>ריכוז ועיבוד חזותי</strong><br/>
+            כדי לשחק טוב, המוח חייב לעשות שני דברים בו-זמנית: לזכור מיקומים מרחביים (איפה הכרטיס) ולזכור תוכן (מה הכרטיס). זה מפעיל גם את קליפת המוח הקדמית (ריכוז) וגם את האונה הקדקודית (עיבוד מרחבי).</p>
+            <p style="margin-top: 1rem;"><strong>למה אמוג'ים דווקא?</strong><br/>
+            ב-Memory Master בחרתי באמוג'ים כתוכן הכרטיסים לא רק מסיבות עיצוביות. מחקרים על זיכרון חזותי מראים שמוח אנושי זוכר תמונות טוב יותר ממילים (Picture Superiority Effect). אמוג'ים — קטנים, צבעוניים, ומזוהים מיידית — הם הפורמט האידיאלי.</p>
+            <p style="margin-top: 1rem;"><strong>טיפ לשחקנים:</strong><br/>
+            במקום לסרוק את הלוח בצורה אקראית, נסו שיטה: גלו כרטיסים בסדר קבוע (שורה אחרי שורה), וצרו "מפה מנטלית" של הלוח. המוח שלכם טוב יותר בזכירת מיקומים כשיש להם מבנה מרחבי ברור. שיטה זו תשפר את הניקוד שלכם משמעותית.</p>
+            <p style="margin-top: 1rem;">רוצים לנסות? <a href="memory-master.html" style="color:var(--orange);">Memory Master זמין בחינם ל-Android ב-Google Play</a>.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <img class="footer-logo" src="logo-full-nobg.png" alt="mishmish" />
+      <p>
+        <span>mishmish</span> &copy; 2025 &nbsp;·&nbsp; מיכאל לב &nbsp;·&nbsp; Building small tools
+      </p>
+      <div class="footer-links">
+        <a href="privacy-policy.html">מדיניות פרטיות</a>
+        <a href="terms.html">תנאי שימוש</a>
+        <a href="mailto:levmishmish14@gmail.com">levmishmish14@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
